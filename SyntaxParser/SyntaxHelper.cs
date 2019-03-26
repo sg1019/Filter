@@ -15,7 +15,6 @@ namespace SyntaxParser
             var syntaxLexer = new SyntaxLexer(inputStream);
             var commonTokenStream = new CommonTokenStream(syntaxLexer);
             var syntaxParser = new SyntaxParser(commonTokenStream);
-            syntaxParser.RemoveErrorListeners();
 
             return syntaxParser;
         }

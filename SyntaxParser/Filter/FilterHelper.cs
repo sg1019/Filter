@@ -28,7 +28,7 @@ namespace SyntaxParser.Filter
 
             var numeric = ctx.numeric();
 
-            if (numeric != null)
+            if (numeric != null && numeric.Length == 2)
             {
                 var lowerBound = ParseDouble(numeric.First().GetText());
                 var upperBound = ParseDouble(numeric.Last().GetText());
@@ -37,7 +37,7 @@ namespace SyntaxParser.Filter
 
             var range = ctx.RANGE();
 
-            if (range != null)
+            if (range != null && range.Length == 2)
             {
                 var lowerBound = new Range(range.First().GetText());
                 var upperBound = new Range(range.Last().GetText());

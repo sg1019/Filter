@@ -39,7 +39,7 @@
   ;
 
  numeric
-  : DIGIT | UNSIGNEDINT | SIGNEDINT | DECIMAL | INFINITY
+  : DECIMAL | INFINITY | SIGNEDINT | UNSIGNEDINT
   ;
 
 /*
@@ -61,11 +61,6 @@
  WORD                : (LOWERCASE | UPPERCASE)+ ;
  QUOTED_TEXT         : ('"' .*? '"') | ('\'' .*? '\'') ;
 
-
- SIGN                : ('+'|'-') ;
- ZERO                : '0' ;
- NONZERO             : [1-9] ;
- DIGIT               : [0-9] ;
  UNSIGNEDINT         : ZERO | (NONZERO DIGIT*) ;
  SIGNEDINT           : SIGN? UNSIGNEDINT ;
  DECIMAL             : SIGNEDINT ( DEC_SEPARATOR UNSIGNEDINT )? ; 
@@ -84,10 +79,14 @@
  CLOSE_BRACKET       : ']' ;
 
  WHITE_SPACE         : [ \r\n\t] -> skip ;
- EOL                 : ('\r' ? '\n') ;
- 
+ EOL                 : ('\r' ? '\n') ; 
+
  fragment LOWERCASE  : [a-z] ;
  fragment UPPERCASE  : [A-Z] ;
+ fragment SIGN       : ('+'|'-') ;
+ fragment ZERO       : '0' ;
+ fragment NONZERO    : [1-9] ;
+ fragment DIGIT      : [0-9] ;
 
 /* 
  Blank: can be use as the default operator
